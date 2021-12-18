@@ -3,10 +3,9 @@ var router = express.Router();
 var Artwork = require("../models/artwork")
 
 /* GET artworks listing. */
-router.get("/one", function (req, res, next) {
-  let data = {
-    artwork: { title: "Fikrisabit", description: "Hali vakti yerinde" },
-  };
+router.get("/:id", function (req, res, next) {
+  const id = req.params.id
+  let data = Artwork.one(id);
 
   res.format({
     html: function () {
